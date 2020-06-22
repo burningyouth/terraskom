@@ -1,0 +1,27 @@
+@white: #fff;
+@brown: #714825;
+@btn-gradient: linear-gradient(to bottom, #87eb00 0%, #41a62a 100%);
+@green-outline:  #3bb220;
+@green: #2dac10;
+@gray: #c8c8c8;
+@darken-gray: #6d6d6d;;
+@light-gray: #ececf3;
+@darken-white: #faf8f6;
+
+
+.transition(@var: all){
+    transition: @var 0.3s ease;
+}
+
+.make-classes(@prefix, @list) {
+    .iter(length(@list));
+    .iter(@i) when (@i > 0) {
+        .iter(@i - 1);
+        @pair:  extract(@list, @i); 
+        @key:   extract(@pair, 1);
+        @value: extract(@pair, 2); 
+        .@{prefix}-@{key} {
+            color: @value;  
+        }
+    }
+}
